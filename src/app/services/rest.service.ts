@@ -7,7 +7,9 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RestService {
-  private readonly API_BASE_URL = 'https://';
+  private readonly isLocal = true;
+  private readonly API_BASE_URL_Local = 'http://localhost:8080';
+  private readonly API_BASE_URL = 'https://front-end-angular-assessment.azurewebsites.net';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -16,9 +18,13 @@ export class RestService {
     return throwError(() => error);
   }
 
+  get getBaseUrl() {
+    return this.isLocal ? this.API_BASE_URL_Local : this.API_BASE_URL;
+  }
+
   // JSON response için
   get<T = any>(url: string, params?: any): Observable<T> {
-    return this.httpClient.get<T>(`${this.API_BASE_URL}${url}`, { params })
+    return this.httpClient.get<T>(`${this.getBaseUrl}${url}`, { params })
       .pipe(
         retry(1),
         catchError(this.handleError)
