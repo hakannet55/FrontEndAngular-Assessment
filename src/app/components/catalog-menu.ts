@@ -8,7 +8,7 @@ import {Component, Input} from "@angular/core";
       <h2>Our Featured Burgers</h2>
       <div>
         Filter:
-        <select>
+        <select (change)="filterBurgers($event)">
           <option value="all">All</option>
           <option value="veg">Veg</option>
           <option value="non-veg">Non-Veg</option>
@@ -65,6 +65,15 @@ export class CatalogMenuComponent {
       this.burgers.sort((a, b) => a.price - b.price);
     } else if (order === 'desc') {
       this.burgers.sort((a, b) => b.price - a.price);
+    }
+  }
+
+  filterBurgers($event: Event) {
+    const filter = ($event.target as HTMLSelectElement).value;
+    if (filter === 'all') {
+      this.burgers = this.burgers;
+    } else {
+      this.burgers = this.burgers.filter(burger => burger.category === filter);
     }
   }
 }
