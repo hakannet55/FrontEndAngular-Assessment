@@ -1,1 +1,154 @@
+
+
+
 /* You can add global styles to this file, and also import other style files */
+
+
+
+.home-container {
+  padding: 2rem;
+}
+
+.hero {
+  background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px;
+  border: 2px solid #3e4144;
+  box-shadow: 1px 5px 6px #424a52;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #fff, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+.featured-burgers, .special-offers {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+.burger-grid, .offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.burger-card, .offer-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.burger-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.price {
+  color: #1976d2;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: block;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
