@@ -19,7 +19,7 @@ import { Component, Input } from '@angular/core';
     }
   `]
 })
-export class HtmlEntityIcon {
+export class HtmlentityiconComponent {
   @Input() name: string = '';
 
   @Input() color = 'black';
