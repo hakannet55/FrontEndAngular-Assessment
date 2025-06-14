@@ -1,9 +1,10 @@
+// catalog-menu.ts
 import {Component, Input} from "@angular/core";
+import {Burger} from "../models/burger.model";
 
 @Component({
   selector: 'catalog-menu',
   template: `
-
     <section class="featured-burgers">
       <h2>Our Featured Burgers</h2>
       <div>
@@ -14,49 +15,56 @@ import {Component, Input} from "@angular/core";
           <option value="non-veg">Non-Veg</option>
         </select>
         Price:
-        <select name="price" id="price" (change)="sortBurgers($event)" >
+        <select name="price" id="price" (change)="sortBurgers($event)">
           <option value="asc">Low to High</option>
           <option value="desc">High to Low</option>
         </select>
       </div>
+
       <div class="burger-grid">
-        <div *ngFor="let burger of burgers" class="burger-card">
+        <div *ngFor="let burger of burgers" (click)="showBurgerDetails(burger)" class="burger-card">
           <img src="../../assets/burger.jpg" alt="Classic Burger">
-            <h3>{{burger.name}}</h3>
-            <p>{{burger.description}}</p>
-            <span class="price">{{burger.price}}</span>
-          </div>
+          <h3>{{burger.name}}</h3>
+          <p>{{burger.description}}</p>
+          <span class="price">{{burger.price | currency}}</span>
+        </div>
       </div>
     </section>
 
-  `,
-  styles: [`
-    .featured-burgers {
-      margin: 20px;
-    }
-    .burger-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      grid-gap: 10px;
-    }
-    .burger-card {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: center;
-    }
-    .burger-card img {
-      max-width: 100%;
-      height: auto;
-    }
-    .price {
-      font-weight: bold;
-    }
-  `]
+    <!-- Burger Details Popup -->
+    <div class="popup-overlay" [style.display]="selectedBurger ? 'flex' : 'none'" (click)="closePopup($event)">
+      <div class="popup-content">
+        <span class="popup-close" (click)="closePopup($event)">×</span>
+        <img [src]="selectedBurger?.image" [alt]="selectedBurger?.name">
+        <h2>{{selectedBurger?.name}}</h2>
+        <p>{{selectedBurger?.description}}</p>
+        <div class="burger-details">
+          <p><strong>Price:</strong> {{selectedBurger?.price | currency}}</p>
+          <p><strong>Category:</strong> {{selectedBurger?.category}}</p>
+          <p><strong>Calories:</strong> {{selectedBurger?.calories}} kcal</p>
+          <p><strong>Ingredients:</strong> {{selectedBurger?.ingredients?.join(', ')}}</p>
+        </div>
+        <button class="cta-button" (click)="addToCart(selectedBurger)">Add to Cart</button>
+      </div>
+    </div>
+  `
 })
 export class CatalogMenuComponent {
-  @Input() burgers: any[] = [];
+  @Input() burgers: Burger[] = [];
+  selectedBurger: any = null;
 
-  constructor() {
+  constructor() {}
+
+  showBurgerDetails(burger: any) {
+    this.selectedBurger = burger;
+  }
+
+  closePopup(event: MouseEvent) {
+    // Sadece overlay'e tıklanırsa popup'ı kapat
+    const target = event.target as HTMLElement;
+    if (target.classList.contains('popup-overlay')) {
+      this.selectedBurger = null;
+    }
   }
 
   sortBurgers(event: any) {
@@ -75,5 +83,11 @@ export class CatalogMenuComponent {
     } else {
       this.burgers = this.burgers.filter(burger => burger.category === filter);
     }
+  }
+
+  addToCart(burger: any) {
+    // TODO: Add burger to cart logic
+    console.log('Adding to cart:', burger);
+    this.closePopup(new MouseEvent('click'));
   }
 }

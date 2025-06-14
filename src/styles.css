@@ -22,8 +22,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 50px;
-  border: 2px solid #3e4144;
-  box-shadow: 1px 5px 6px #424a52;
+  border: 2px solid #9ecfff;
+  box-shadow: 0px 0px 20px 20px #a4a4a4;
 }
 
 .hero::before {
@@ -66,9 +66,10 @@
   background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
   color: white;
   padding: 1rem 2rem;
+  margin: 5px;
   border: none;
   border-radius: 30px;
-  font-size: 1.2rem;
+  font-size: .91rem;
   font-weight: 600;
   letter-spacing: 1px;
   cursor: pointer;
@@ -112,18 +113,25 @@
 }
 
 .burger-grid, .offer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+  justify-content: start;
 }
 
 .burger-card, .offer-card {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  width: 25%;
+  margin: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 
 .burger-card img {
@@ -141,6 +149,30 @@
   display: block;
   margin-top: 1rem;
 }
+
+.featured-burgers {
+  margin: 20px;
+}
+
+.burger-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+.burger-card img {
+  max-width: 100%;
+  height: auto;
+}
+.price {
+  font-weight: bold;
+}
+select {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 
 @media (max-width: 768px) {
   .hero h1 {
