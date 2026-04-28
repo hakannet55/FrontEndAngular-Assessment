@@ -5,8 +5,11 @@ body{
   background:unset !important;
   background-color:black !important;
 }
-header.block-header .background {
-  opacity:0.5;
+.block-sticky-bar-layout.transition.transition--scale.transition--root-hidden {
+    background: #586f7a;
+}
+header.block-header > div {
+  background:#ffffff9c !important;
 }
 header.block-header {
   position: relative;
@@ -15,7 +18,7 @@ header.block-header {
 }
 
 /* Arka plan katmanı */
-header.block-heade {
+header.block-header {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -23,12 +26,12 @@ header.block-heade {
   background-color: unset !important;
 
   /* Açık, modern metal tonları */
-  background: url(https://images.unsplash.com/photo-1610374792793-f016b77ca51a?auto=format&fit=crop&w=360%20360w);
+  background: url(https://images.unsplash.com/photo-1572467551143-a57f5de1f861?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTE5Mjl8MHwxfHNlYXJjaHwxNnx8Y2hyb21lfGVufDB8fHx8MTc3NzMwNTg0NHww&ixlib=rb-4.1.0&q=80&w=1080);
   
-  background-size: 300% 300%;
+  background-size: 210%  775%;
 
   /* ✅ Hızlandırılmış akış animasyonu */
-  animation: headerMetalFlow 6s ease-in-out infinite;
+  animation: headerMetalFlow 125s linear infinite;
 
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.8),
@@ -54,7 +57,7 @@ header.block-header::after {
   );
 
   /* ✅ Daha hızlı ışık süpürmesi */
-  animation: headerLightSweep 3s linear infinite;
+  animation: headerLightSweep 5s linear infinite;
 
   pointer-events: none;
 }
@@ -78,4 +81,54 @@ header.block-header > * {
 @keyframes headerLightSweep {
   0%   { transform: translateX(-120%); }
   100% { transform: translateX(120%); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOBİL & TABLETTE GRID'İ DEVRE DIŞI BIRAK */
+@media (max-width: 1024px) {
+  .block-layout.block-layout--layout {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* TÜM ITEMLER */
+  .block-layout.block-layout--layout > .layout-element {
+    position: static !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  /* TABLET: 3 item yan yana */
+  @media (min-width: 600px) {
+    .block-layout.block-layout--layout > .layout-element {
+      flex: 0 0 calc(33.333% - 11px);
+    }
+  }
+
+  /* MOBİL: 2 item yan yana */
+  @media (max-width: 599px) {
+    .block-layout.block-layout--layout > .layout-element {
+      flex: 0 0 calc(50% - 8px);
+    }
+  }
+}
+
+/* ÇOK KÜÇÜK MOBİL: tek sütun */
+@media (max-width: 420px) {
+  .block-layout.block-layout--layout > .layout-element {
+    flex: 0 0 100%;
+  }
 }
