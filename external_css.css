@@ -1,3 +1,4 @@
+header.block-header .background{display:none}
 header.block-header {
   position: relative;
   background: linear-gradient(
