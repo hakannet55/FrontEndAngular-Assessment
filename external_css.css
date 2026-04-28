@@ -1,0 +1,42 @@
+header.block-header {
+  position: relative;
+  background: linear-gradient(
+    120deg,
+    #1f1f1f,
+    #2c2c2c,
+    #242424
+  );
+  background-size: 300% 300%;
+  animation: headerMetalFlow 14s ease infinite;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -2px 0 rgba(0,0,0,0.5),
+    0 14px 40px rgba(0,0,0,0.4);
+
+  border-radius: 0 0 18px 18px;
+  overflow: hidden;
+}
+header.block-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255,255,255,0.07),
+    transparent
+  );
+  animation: headerLightSweep 7s linear infinite;
+  pointer-events: none;
+}
+@keyframes headerMetalFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes headerLightSweep {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
