@@ -1,7 +1,13 @@
 /* ===============================
    HEADER – AÇIK RENK + HIZLI ANİMASYON
    =============================== */
-
+body{
+  background:unset !important;
+  background-color:black !important;
+}
+header.block-header .background {
+  opacity:0.5;
+}
 header.block-header {
   position: relative;
   z-index: 18;
@@ -9,7 +15,7 @@ header.block-header {
 }
 
 /* Arka plan katmanı */
-header.block-header .background {
+header.block-heade {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -17,13 +23,8 @@ header.block-header .background {
   background-color: unset !important;
 
   /* Açık, modern metal tonları */
-  background: linear-gradient(
-    120deg,
-    #f2f4f7,
-    #e3e8ef,
-    #d6dde6
-  );
-
+  background: url(https://images.unsplash.com/photo-1610374792793-f016b77ca51a?auto=format&fit=crop&w=360%20360w);
+  
   background-size: 300% 300%;
 
   /* ✅ Hızlandırılmış akış animasyonu */
