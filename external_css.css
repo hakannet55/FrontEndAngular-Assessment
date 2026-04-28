@@ -1,6 +1,5 @@
-header.block-header .background{display:none}
-header.block-header {
-  position: relative;
+header.block-header .background {
+  background-color:unset !important;
   background: linear-gradient(
     120deg,
     #1f1f1f,
